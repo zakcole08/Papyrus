@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -40,6 +41,7 @@
             this.txtMain = new System.Windows.Forms.RichTextBox();
             this.toolPanel = new System.Windows.Forms.Panel();
             this.txtLineNums = new System.Windows.Forms.RichTextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,12 +147,10 @@
             this.fontSelect.Sorted = true;
             this.fontSelect.Text = "Consolas";
             this.fontSelect.SelectedIndexChanged += new System.EventHandler(this.fontSelect_SelectedIndexChanged);
-            this.fontSelect.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // fontSizeSelect
             // 
             this.fontSizeSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
-            this.fontSizeSelect.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.fontSizeSelect.Items.AddRange(new object[] {
             "2",
             "4",
@@ -197,6 +197,7 @@
             this.txtMain.Size = new System.Drawing.Size(836, 568);
             this.txtMain.TabIndex = 2;
             this.txtMain.Text = "";
+            this.txtMain.VScroll += new System.EventHandler(this.txtMain_VScroll);
             this.txtMain.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // toolPanel
@@ -210,7 +211,6 @@
             this.toolPanel.Name = "toolPanel";
             this.toolPanel.Size = new System.Drawing.Size(134, 576);
             this.toolPanel.TabIndex = 3;
-            this.toolPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtLineNums
             // 
@@ -219,15 +219,21 @@
             this.txtLineNums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(233)))), ((int)(((byte)(195)))));
             this.txtLineNums.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLineNums.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtLineNums.Location = new System.Drawing.Point(84, 38);
+            this.txtLineNums.Location = new System.Drawing.Point(28, 38);
             this.txtLineNums.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtLineNums.Name = "txtLineNums";
             this.txtLineNums.ReadOnly = true;
             this.txtLineNums.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtLineNums.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtLineNums.Size = new System.Drawing.Size(50, 576);
+            this.txtLineNums.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtLineNums.Size = new System.Drawing.Size(106, 576);
             this.txtLineNums.TabIndex = 0;
             this.txtLineNums.Text = "";
+            this.txtLineNums.WordWrap = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 50;
             // 
             // Form1
             // 
@@ -267,6 +273,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripComboBox fontSizeSelect;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

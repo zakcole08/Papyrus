@@ -10,6 +10,8 @@ using System.Threading;
 using System.Windows.Forms;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.InteropServices;
+
 
 namespace Papyrus
 {
@@ -23,6 +25,7 @@ namespace Papyrus
         public Form1()
         {
             InitializeComponent();
+
             txtLineNums.Text = $" | {lineNum}\n";
             LoadFileFromCommandLine();
         }
@@ -83,21 +86,34 @@ namespace Papyrus
                 txtMain.ScrollToCaret();
             }
         }
+        //
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern int SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private const int EM_GETFIRSTVISIBLELINE = 0x00CE;
+        private const int EM_SETSEL = 0x00B1;
+        private void txtMain_VScroll(object sender, EventArgs e)
         {
+            if (txtMain.IsHandleCreated && txtLineNums.IsHandleCreated)
+            {
+                // Get the first visible line in txtMain
+                int firstVisibleLineMain = SendMessage(txtMain.Handle, EM_GETFIRSTVISIBLELINE, 0, 0);
 
+                // Determine the text offset corresponding to the line
+                int startOfLinePosition = txtMain.GetFirstCharIndexFromLine(firstVisibleLineMain);
+
+                // Scroll txtLineNums to align with txtMain
+                txtLineNums.Select(startOfLinePosition, 0); // Set selection start, length 0 to avoid highlighting
+                txtLineNums.ScrollToCaret();
+            }
         }
+        //
+
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             saveBar.Value = 0;
 
             printLineNums();
-        }
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void fontSelect_SelectedIndexChanged(object sender, EventArgs e)
