@@ -41,7 +41,6 @@
             this.toolPanel = new System.Windows.Forms.Panel();
             this.txtLineNums = new System.Windows.Forms.RichTextBox();
             this.toolStrip.SuspendLayout();
-            this.toolPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -57,7 +56,7 @@
             this.fontSizeSelect});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(978, 38);
+            this.toolStrip.Size = new System.Drawing.Size(978, 36);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -68,7 +67,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(34, 33);
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 33);
             this.toolStripButton2.Text = "btnOpen";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -79,7 +78,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(34, 33);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 33);
             this.toolStripButton1.Text = "btnSave";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -93,7 +92,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
             // 
             // fontSelect
             // 
@@ -142,7 +141,7 @@
             "Consolas",
             "Constantia"});
             this.fontSelect.Name = "fontSelect";
-            this.fontSelect.Size = new System.Drawing.Size(121, 38);
+            this.fontSelect.Size = new System.Drawing.Size(121, 36);
             this.fontSelect.Sorted = true;
             this.fontSelect.Text = "Consolas";
             this.fontSelect.SelectedIndexChanged += new System.EventHandler(this.fontSelect_SelectedIndexChanged);
@@ -151,6 +150,7 @@
             // fontSizeSelect
             // 
             this.fontSizeSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
+            this.fontSizeSelect.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.fontSizeSelect.Items.AddRange(new object[] {
             "2",
             "4",
@@ -163,7 +163,7 @@
             "18",
             "20"});
             this.fontSizeSelect.Name = "fontSizeSelect";
-            this.fontSizeSelect.Size = new System.Drawing.Size(75, 38);
+            this.fontSizeSelect.Size = new System.Drawing.Size(75, 36);
             this.fontSizeSelect.Text = "10";
             this.fontSizeSelect.SelectedIndexChanged += new System.EventHandler(this.fontSizeSelect_IndexChanged);
             // 
@@ -193,7 +193,8 @@
             this.txtMain.Location = new System.Drawing.Point(142, 38);
             this.txtMain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMain.Name = "txtMain";
-            this.txtMain.Size = new System.Drawing.Size(836, 606);
+            this.txtMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMain.Size = new System.Drawing.Size(836, 568);
             this.txtMain.TabIndex = 2;
             this.txtMain.Text = "";
             this.txtMain.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -204,11 +205,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.toolPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(243)))), ((int)(((byte)(205)))));
             this.toolPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.toolPanel.Controls.Add(this.txtLineNums);
             this.toolPanel.Location = new System.Drawing.Point(0, 38);
             this.toolPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.toolPanel.Name = "toolPanel";
-            this.toolPanel.Size = new System.Drawing.Size(134, 606);
+            this.toolPanel.Size = new System.Drawing.Size(134, 576);
             this.toolPanel.TabIndex = 3;
             this.toolPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -219,22 +219,23 @@
             this.txtLineNums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(233)))), ((int)(((byte)(195)))));
             this.txtLineNums.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLineNums.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtLineNums.Location = new System.Drawing.Point(84, 0);
+            this.txtLineNums.Location = new System.Drawing.Point(84, 38);
             this.txtLineNums.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtLineNums.Name = "txtLineNums";
             this.txtLineNums.ReadOnly = true;
             this.txtLineNums.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtLineNums.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtLineNums.Size = new System.Drawing.Size(50, 623);
+            this.txtLineNums.Size = new System.Drawing.Size(50, 576);
             this.txtLineNums.TabIndex = 0;
             this.txtLineNums.Text = "";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(253)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(978, 644);
+            this.Controls.Add(this.txtLineNums);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.toolPanel);
             this.Controls.Add(this.txtMain);
@@ -245,9 +246,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
             this.Text = "Papyrus";
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.toolPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

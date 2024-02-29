@@ -56,28 +56,31 @@ namespace Papyrus
         {
             string[] lines = txtMain.Lines;
 
+            int currentLineIndex = txtMain.GetLineFromCharIndex(txtMain.SelectionStart);
+            int currentLinePosition = txtMain.SelectionStart - txtMain.GetFirstCharIndexFromLine(currentLineIndex);
+
             while (lines.Length > lastLineCount)
             {
                 lineNum++;
-                txtLineNums.Text += $" | {lineNum}\n";
+                txtLineNums.AppendText($" | {lineNum}\n");
+                txtLineNums.SelectionStart = txtLineNums.Text.Length;
+                txtLineNums.ScrollToCaret();
                 lastLineCount++;
             }
 
-            while (lines.Length+1 <= lastLineCount && lastLineCount != 1)
+            while (lines.Length < lastLineCount && lastLineCount != 1)
             {
                 if (lineNum > 1)
                 {
                     string delLineNum = txtLineNums.Text.Replace($" | {lineNum}\n", "");
                     txtLineNums.Text = delLineNum;
-                }
-                if (lineNum != 1)
-                {
                     lineNum--;
-                }
-                if (lastLineCount != 1)
-                {
                     lastLineCount--;
                 }
+                txtMain.SelectionStart = txtMain.GetFirstCharIndexFromLine(currentLineIndex) + currentLinePosition;
+                txtLineNums.SelectionStart = txtLineNums.GetFirstCharIndexFromLine(currentLineIndex);
+                txtLineNums.ScrollToCaret();
+                txtMain.ScrollToCaret();
             }
         }
 
@@ -90,9 +93,6 @@ namespace Papyrus
             saveBar.Value = 0;
 
             printLineNums();
-
-            txtLineNums.SelectionStart = txtLineNums.Text.Length;
-            txtLineNums.ScrollToCaret();
         }
 
         private void toolStripComboBox1_Click(object sender, EventArgs e)
@@ -224,6 +224,11 @@ namespace Papyrus
                     MessageBox.Show($"Error opening file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            txtMain.Focus();
         }
     }
 }
